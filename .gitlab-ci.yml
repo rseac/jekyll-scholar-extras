@@ -1,0 +1,34 @@
+variables:
+        VERSION: "0.1.4"
+        
+image: ruby:2.2
+
+stages:
+    - setup-extras
+    - make-extras
+
+#setup-gems:
+#        stage: setup-gems
+#        script: 
+#                - gem install jekyll 
+#                - gem install jekyll-scholar 
+#                - gem install bundler
+#                - gem list
+
+setup-extras:
+        stage: setup-extras
+        script: 
+                - gem list
+                - cd ~; 
+                - git clone https://git.uwaterloo.ca/caesr-pub/jekyll-scholar-extras.git; 
+                - cd jekyll-scholar-extras;
+
+make-extras:
+        stage: make-extras
+        script: 
+                - gem build jekyll-scholar-extras.gemspec ; 
+                - gem install jekyll-scholar-extras-$VERSION.gem; 
+                - cp -r samples/jekyll-template ~/; 
+                - cd ~/jekyll-template
+                - jekyll build --trace
+        

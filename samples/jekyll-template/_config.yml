@@ -1,0 +1,40 @@
+source:      .
+destination: ./_site
+plugin_dir:  ./_plugins
+layouts_dir: ./_layouts
+
+lsi:      false
+safe:     false
+highlighter: rouge
+
+gems:
+
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "with_toc_data", "smart"]
+
+baseurl: ./ 
+root_home: 
+
+permalink: /:year/:month/:day/:title
+exclude:   ["Rakefile", "no-build"]
+title:     
+url:       
+
+# jekyll-scholar configurations
+scholar:
+  style: ./publications/customized-jse.csl
+  locale: en
+  sort_by: year
+  order: descending
+  source: ./publications
+  bibliography: test.bib
+  details_dir: ./publications/details
+  query: "@*[public!=no]"
+
+  # Scholar has changed the way it renders bib tags
+  # Need to look at more at the defaults.
+  bibliography_list_tag: "ul"
+
+# jekyll-scholar-extras configurations
+# TODO Options need to be reworked through

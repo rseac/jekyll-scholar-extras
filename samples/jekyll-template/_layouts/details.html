@@ -1,0 +1,28 @@
+---
+layout: default
+no_sidebar: true
+---
+ 
+<h1 class="large-bottom">{{ page.title }}</h1>
+<h2> {{ page.entry.citeproc}} </h2> 
+
+<h3>Abstract:</h3>
+		<div id="main" class="span-{% if page.no_sidebar %}24{% else %}17{% endif %}">
+{{ page.entry.abstract }} <br />
+    </div>
+<br />
+<b>Downloads:</b>
+{% if page.entry.pdflink1 == empty or page.entry.pdflink1 == nil %}
+{% else %}
+<a href="{{page.entry.pdflink1}}">PDF</a>
+{% endif %}
+{% if page.entry.pptlink1 == empty  or page.entry.pptlink1 == nil %}
+{% else %}
+, <a href="{{page.entry.pptlink1}}">PPT</a> 
+{% endif %}
+
+<br />
+<h3>BibTeX:</h3>
+{% highlight bash tabsize=2 %}
+ {{ page.entry.bibtex }} 
+{% endhighlight %}

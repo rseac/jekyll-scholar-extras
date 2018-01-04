@@ -1,0 +1,47 @@
+---
+layout: default 
+no_sidebar: true
+no_type_sidebar: false
+---
+
+<div class="pure-g-r" id="layout">
+  <div class="pure-u-1-2">
+    <div class="l-left">
+    <h1> Publications</h1>
+    </div>
+  </div>
+
+    <div class="pure-u-1-2">
+      <div class="l-right">
+	<p>
+	  <a class="pure-button" href="{{site.baseurl}}/publications/index.html">By Year</a>
+	  <a class="pure-button" href="{{site.baseurl}}/publications/index_bytype.html">By Type</a>	  
+      </p>
+      </div>
+    </div>
+
+<div class="pure-u-1">
+{% bibliography_bytype --query @article %}
+</div>
+
+
+<div class="pure-u-1">
+{% bibliography_bytype --query @inproceedings %}
+</div>
+
+<div class="pure-u-1">
+{% bibliography_bytype --query @book %}
+</div>
+
+
+<div class="pure-u-1">
+{% bibliography_bytype --query @incollection %}
+</div>
+
+<div class="pure-u-1">
+{% bibliography_bytype --query @techreport %}
+</div>
+
+
+</div>
+
