@@ -28,8 +28,9 @@ module Jekyll
                             }]
 
         @type_counts.keys.each { |t|
-          bib = bibliography.query('@*') { |b|
-            (b.public == 'yes' && b.type == t)
+          bib = bibliography.query('@*[public=yes]') { |b|
+            #(b.public == 'yes' && 
+             (b.type == t)
           }
           @type_counts[t] = bib.size
         }
@@ -58,8 +59,8 @@ module Jekyll
 
 
       def entries_year(year)
-        b = bibliography.query('@*') { 
-          |a| (a.year == year && a.public == 'yes')
+        b = bibliography.query('@*[public=yes]') { 
+          |a| (a.year == year)# && a.public? == 'yes')
         }
       end
 
