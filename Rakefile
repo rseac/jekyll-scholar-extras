@@ -28,7 +28,7 @@ task :github do |t|
    system "git commit -m 'Push jekyll-scholar-extras #{Jekyll::ScholarExtras::VERSION} to github' "
    system "git remote add origin git@github.com:rseac/jekyll-scholar-extras.git"
    system "echo 'push to remote without history'"
-   system "git push -u origin upit"
+   system "git push -u origin upit:master"
    system "git remote remove origin"
    system "git checkout master"
    system "git branch -D upit"

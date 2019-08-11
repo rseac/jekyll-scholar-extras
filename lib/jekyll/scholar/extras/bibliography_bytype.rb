@@ -45,7 +45,11 @@ module Jekyll
         set_context_to context
 
         # Only select items that are public.
-        items = entries.select { |e| e.public == 'yes' }
+        #items = entries.query('@*[public=yes]')
+
+        public_query = query + '[public=yes]'
+        items = bibliography.query(public_query)
+        #items = entries.select { |e| e.public? == 'yes' }
 
         initialize_prefix_defaults()
         initialize_type_labels()
@@ -66,8 +70,12 @@ module Jekyll
         items = items[offset..max] if limit_entries?
 
         bibliography = render_header(@type_labels[query])
+        items.each_with_index.map{ |e,i| 
+        
+        }
         bibliography << items.each_with_index.map { |entry, index|
           reference = render_index(entry, bibliography_tag(entry, nil))
+          #puts entry.title
 
           if generate_details?
             reference << link_to(details_link_for(entry), config['details_link'],
